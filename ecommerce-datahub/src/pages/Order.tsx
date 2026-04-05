@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { CheckCircle2, AlertCircle, ArrowLeft, Wifi } from "lucide-react";
 import { Button } from "@/src/components/UI/button";
+import { getStoredUser } from "@/src/lib/auth";
 
 interface Package {
   id: number;
@@ -20,8 +21,7 @@ export default function Order() {
   const [step, setStep] = useState<"confirm" | "processing" | "success">("confirm");
   const [error, setError] = useState("");
 
-  const userStr = localStorage.getItem("user");
-  const user = userStr ? JSON.parse(userStr) : null;
+  const user = getStoredUser();
 
   useEffect(() => {
     if (!user) {

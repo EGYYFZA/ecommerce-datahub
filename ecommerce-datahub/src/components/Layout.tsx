@@ -2,19 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { LogOut, User, ChevronDown, Facebook, Twitter, Youtube, Instagram, Linkedin, Wallet } from "lucide-react";
 import { Button } from "./UI/button";
+import { getStoredUser } from "@/src/lib/auth";
 
 export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [user, setUser] = useState(() => {
-    const userStr = localStorage.getItem("user");
-    return userStr ? JSON.parse(userStr) : null;
-  });
+  const [user, setUser] = useState(() => getStoredUser());
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const userStr = localStorage.getItem("user");
-      setUser(userStr ? JSON.parse(userStr) : null);
+      setUser(getStoredUser());
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -67,7 +64,7 @@ export default function Layout() {
                   >
                     <Wallet className="w-4 h-4" />
                     <span className="text-sm font-bold">
-                      Rp {user.balance.toLocaleString('id-ID')}
+                      Rp {(Number(user.balance) || 0).toLocaleString('id-ID')}
                     </span>
                   </Link>
                   <div className="flex items-center space-x-3">

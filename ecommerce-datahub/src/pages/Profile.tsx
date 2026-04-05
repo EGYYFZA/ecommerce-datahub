@@ -5,10 +5,10 @@ import { Button } from "@/src/components/UI/button";
 import { Input } from "@/src/components/UI/input";
 import { User, Phone, Wallet, CheckCircle2 } from "lucide-react";
 import { Navigate } from "react-router-dom";
+import { getStoredUser } from "@/src/lib/auth";
 
 export default function Profile() {
-  const userStr = localStorage.getItem("user");
-  const [user, setUser] = useState(userStr ? JSON.parse(userStr) : null);
+  const [user, setUser] = useState(() => getStoredUser());
   const [topUpAmount, setTopUpAmount] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);

@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { Button } from "@/src/components/UI/button";
 import { Globe2, Infinity as InfinityIcon, Network, Shield, Wifi } from "lucide-react";
-import heroGlobe from "@/src/assets/Globe.svg";
-import contentGlobe from "@/src/assets/ContentGlobe.svg";
+import heroGlobe from "@/src/assets/ContentGlobe.svg";
+import contentGlobe from "@/src/assets/Globe.svg";
 
 interface Package {
   id: number;

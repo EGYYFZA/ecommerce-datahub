@@ -1,0 +1,30 @@
+{
+  "name": "ecommerce-datahub",
+  "version": "1.0.0",
+  "description": "Membuat sebuah website dengan ReactJS dan integrasi API Json",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm --prefix ecommerce-datahub run dev",
+    "build": "npm --prefix ecommerce-datahub run build",
+    "lint": "npm --prefix ecommerce-datahub run lint",
+    "preview": "npm --prefix ecommerce-datahub run preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EGYYFZA/ecommerce-datahub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EGYYFZA/ecommerce-datahub/issues"
+  },
+  "homepage": "https://github.com/EGYYFZA/ecommerce-datahub#readme",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vite": "^8.0.3"
+  }
+}

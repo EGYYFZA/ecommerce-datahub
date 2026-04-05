@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/UI/card";
 import { Receipt, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getStoredUser } from "@/src/lib/auth";
 
 interface Transaction {
   id: number;
@@ -30,8 +31,7 @@ export default function Transactions() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const userStr = localStorage.getItem("user");
-  const user = userStr ? JSON.parse(userStr) : null;
+  const user = getStoredUser();
 
   useEffect(() => {
     if (!user) {
