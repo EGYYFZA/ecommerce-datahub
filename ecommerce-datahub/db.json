@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "password",
+      "name": "Budi Santoso",
+      "phone": "081234567890",
+      "balance": 500000,
+      "role": "customer"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "password": "password",
+      "name": "Admin",
+      "phone": "080000000000",
+      "balance": 0,
+      "role": "admin"
+    }
+  ],
+  "packages": [
+    {
+      "id": 1,
+      "name": "Unlimited",
+      "title": "Paket Internet Ulimited",
+      "description": "Kuota Utama Tak Terbatas, Masa Aktif 30 Hari",
+      "price": 250000
+    },
+    {
+      "id": 2,
+      "name": "Freedom 32 GB",
+      "title": "Paket Internet Freedom 32 GB",
+      "description": "Kuota Utama 32 GB, Masa Aktif 30 Hari",
+      "price": 125000
+    },
+    {
+      "id": 3,
+      "name": "Freedom 12 GB",
+      "title": "Paket Internet Freedom 12 GB",
+      "description": "Kuota Utama 12 GB, Masa Aktif 30 Hari",
+      "price": 75000
+    },
+    {
+      "id": 4,
+      "name": "Freedom 3 GB",
+      "title": "Paket Internet Freedom 3 GB",
+      "description": "Kuota Utama 3 GB, Masa Aktif 30 Hari",
+      "price": 25000
+    }
+  ],
+  "transactions": []
+}
