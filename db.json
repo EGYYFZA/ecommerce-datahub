@@ -1,0 +1,115 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "password",
+      "name": "Budi Santoso",
+      "email": "budi.santoso@example.com",
+      "phone": "081234567890",
+      "balance": 240000,
+      "address": "Jl. Merdeka No. 10, Jakarta Pusat"
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "password": "password2",
+      "name": "Siti Rahayu",
+      "email": "siti.rahayu@example.com",
+      "phone": "082345678901",
+      "balance": 75000,
+      "address": "Jl. Sudirman No. 45, Bandung"
+    }
+  ],
+  "packages": [
+    {
+      "id": 1,
+      "name": "Paket Hemat 1GB",
+      "quota": "1 GB",
+      "validity": "7 hari",
+      "price": 10000,
+      "description": "Cocok untuk penggunaan ringan sehari-hari",
+      "category": "hemat"
+    },
+    {
+      "id": 2,
+      "name": "Paket Reguler 5GB",
+      "quota": "5 GB",
+      "validity": "30 hari",
+      "price": 35000,
+      "description": "Paket andalan untuk aktivitas harian",
+      "category": "reguler"
+    },
+    {
+      "id": 3,
+      "name": "Paket Unlimited Nonton",
+      "quota": "Unlimited",
+      "validity": "30 hari",
+      "price": 65000,
+      "description": "Streaming video tanpa batas sepuasnya",
+      "category": "unlimited"
+    },
+    {
+      "id": 4,
+      "name": "Paket Gaming 10GB",
+      "quota": "10 GB",
+      "validity": "30 hari",
+      "price": 50000,
+      "description": "Latensi rendah untuk gaming online",
+      "category": "gaming"
+    },
+    {
+      "id": 5,
+      "name": "Paket Super 20GB",
+      "quota": "20 GB",
+      "validity": "30 hari",
+      "price": 85000,
+      "description": "Kuota besar untuk pengguna aktif",
+      "category": "super"
+    },
+    {
+      "id": 6,
+      "name": "Paket Mini 500MB",
+      "quota": "500 MB",
+      "validity": "3 hari",
+      "price": 5000,
+      "description": "Paket mini untuk kebutuhan darurat",
+      "category": "hemat"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "userId": 1,
+      "packageId": 2,
+      "packageName": "Paket Reguler 5GB",
+      "quota": "5 GB",
+      "validity": "30 hari",
+      "price": 35000,
+      "date": "2024-11-01T10:00:00.000Z",
+      "status": "success"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "packageId": 3,
+      "packageName": "Paket Unlimited Nonton",
+      "quota": "Unlimited",
+      "validity": "30 hari",
+      "price": 65000,
+      "date": "2024-10-15T14:30:00.000Z",
+      "status": "success"
+    },
+    {
+      "userId": 1,
+      "packageId": 1,
+      "packageName": "Paket Hemat 1GB",
+      "quota": "1 GB",
+      "validity": "7 hari",
+      "price": 10000,
+      "date": "2026-04-05T15:15:36.057Z",
+      "status": "success",
+      "id": 3
+    }
+  ]
+}
