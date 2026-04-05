@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/UI/card";
+import { Button } from "@/src/components/UI/button";
+import { Input } from "@/src/components/UI/input";
 import { User, Phone, Wallet, CheckCircle2 } from "lucide-react";
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
   const userStr = localStorage.getItem("user");
@@ -52,7 +53,9 @@ export default function Profile() {
     }
   };
 
-  if (!user) return null;
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <motion.div 

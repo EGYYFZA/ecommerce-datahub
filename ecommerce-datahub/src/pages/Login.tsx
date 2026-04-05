@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
+import { Button } from "@/src/components/UI/button";
+import { Input } from "@/src/components/UI/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/src/components/UI/card";
 import { Smartphone } from "lucide-react";
 
 export default function Login() {
@@ -17,7 +17,14 @@ export default function Login() {
     setError("");
 
     try {
-      const response = await fetch(`/api/users?username=${username}&password=${password}`);
+      const query = new URLSearchParams({
+        username,
+        password,
+      });
+      const response = await fetch(`/api/users?${query.toString()}`);
+      if (!response.ok) {
+        throw new Error("Login request failed");
+      }
       const users = await response.json();
 
       if (users.length > 0) {
@@ -27,7 +34,7 @@ export default function Login() {
       } else {
         setError("Invalid username or password");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred during login");
     }
   };

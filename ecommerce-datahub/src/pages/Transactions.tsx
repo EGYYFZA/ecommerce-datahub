@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { motion } from "motion/react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/UI/card";
 import { Receipt, CheckCircle2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Transaction {
   id: number;
@@ -27,17 +28,28 @@ export default function Transactions() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [packages, setPackages] = useState<Record<number, Package>>({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const userStr = localStorage.getItem("user");
   const user = userStr ? JSON.parse(userStr) : null;
 
   useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      setLoading(false);
+      return;
+    }
+
     const fetchData = async () => {
       try {
         const [txRes, pkgRes] = await Promise.all([
           fetch(`/api/transactions?userId=${user.id}&_sort=date&_order=desc`),
           fetch("/api/packages"),
         ]);
+
+        if (!txRes.ok || !pkgRes.ok) {
+          throw new Error("Failed to fetch transactions data");
+        }
 
         const txData = await txRes.json();
         const pkgData = await pkgRes.json();
@@ -49,17 +61,15 @@ export default function Transactions() {
 
         setTransactions(txData);
         setPackages(pkgMap);
-      } catch (err) {
+      } catch {
         console.error("Failed to fetch transactions");
       } finally {
         setLoading(false);
       }
     };
 
-    if (user) {
-      fetchData();
-    }
-  }, [user]);
+    fetchData();
+  }, [navigate, user]);
 
   if (loading) {
     return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;

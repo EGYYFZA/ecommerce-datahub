@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { Wifi } from "lucide-react";
-import { Button } from "@/src/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/ui/card";
+import { Button } from "@/src/components/UI/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/src/components/UI/card";
 
 interface Package {
-  id: string;
+  id: number;
   name: string;
   title: string;
   description: string;
@@ -19,12 +19,17 @@ export default function Products() {
 
   useEffect(() => {
     fetch("/api/packages")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch packages");
+        }
+        return res.json();
+      })
       .then((data) => setPackages(data))
       .catch((err) => console.error("Failed to fetch packages:", err));
   }, []);
 
-  const handleOrder = (pkgId: string) => {
+  const handleOrder = (pkgId: number) => {
     navigate(`/order/${pkgId}`);
   };
 
@@ -56,7 +61,7 @@ export default function Products() {
               <CardHeader className="pb-2">
                 <CardTitle className="text-xl font-bold">{pkg.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex-grow">
+              <CardContent className="grow">
                 <p className="text-gray-600 text-sm mb-6">{pkg.description}</p>
                 <div className="text-3xl font-extrabold text-gray-900">
                   Rp. {pkg.price.toLocaleString("id-ID")}

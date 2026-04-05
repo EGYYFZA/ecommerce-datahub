@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Tag, Percent, Gift } from "lucide-react";
-import { Card, CardContent } from "@/src/components/ui/card";
+import { Card, CardContent } from "@/src/components/UI/card";
 
 export default function Promos() {
   const promos = [

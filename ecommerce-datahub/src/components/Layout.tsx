@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { LogOut, User, ChevronDown, Facebook, Twitter, Youtube, Instagram, Linkedin, Wallet } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "./UI/button";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export default function Layout() {
               <Link to="/products" className={`flex items-center text-sm font-medium ${location.pathname === '/products' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
                 Produk <ChevronDown className="w-4 h-4 ml-1" />
               </Link>
-              <Link to="/promos" className={`flex items-center text-sm font-medium ${location.pathname === '/promos' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
+              <Link to="/promosi" className={`flex items-center text-sm font-medium ${location.pathname === '/promosi' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
                 Promo <ChevronDown className="w-4 h-4 ml-1" />
               </Link>
               <Link to="/transactions" className={`text-sm font-medium ${location.pathname === '/transactions' ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
@@ -98,7 +98,7 @@ export default function Layout() {
         </div>
       </nav>
 
-      <main className="flex-grow">
+      <main className="grow">
         <Outlet />
       </main>
 

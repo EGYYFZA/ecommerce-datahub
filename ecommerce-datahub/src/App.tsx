@@ -13,7 +13,7 @@ function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} className="flex-grow flex flex-col">
+      <motion.div key={location.pathname} className="grow flex flex-col">
         <Routes location={location}>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>

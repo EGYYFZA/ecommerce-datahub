@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Button } from "@/src/components/ui/button";
-import { Globe2, Infinity, Network, Shield, Wifi } from "lucide-react";
+import { Button } from "@/src/components/UI/button";
+import { Globe2, Infinity as InfinityIcon, Network, Shield, Wifi } from "lucide-react";
+import heroGlobe from "@/src/assets/Globe.svg";
+import contentGlobe from "@/src/assets/ContentGlobe.svg";
 
 interface Package {
   id: number;
@@ -21,9 +23,12 @@ export default function Home() {
     const fetchPackages = async () => {
       try {
         const response = await fetch("/api/packages");
+        if (!response.ok) {
+          throw new Error("Failed to fetch packages");
+        }
         const data = await response.json();
         setPackages(data);
-      } catch (err) {
+      } catch {
         console.error("Failed to load packages");
       } finally {
         setLoading(false);
@@ -80,9 +85,11 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative flex justify-center"
             >
-              <div className="w-80 h-80 md:w-96 md:h-96 bg-gray-200 border-4 border-dashed border-gray-400 rounded-full flex items-center justify-center overflow-hidden">
-                <span className="text-gray-500 font-medium text-center px-4">Hero Image Placeholder<br/>(Upload Asset Here)</span>
-              </div>
+              <img
+                src={heroGlobe}
+                alt="Ilustrasi globe jaringan global"
+                className="w-80 h-80 md:w-96 md:h-96 object-contain"
+              />
             </motion.div>
           </div>
         </div>
@@ -104,22 +111,25 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Placeholder for Global Network Illustration */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full max-w-4xl mx-auto h-80 bg-gray-100 border-4 border-dashed border-gray-300 rounded-3xl flex items-center justify-center mb-16"
+            className="w-full max-w-4xl mx-auto mb-16"
           >
-            <span className="text-gray-500 font-medium text-lg text-center">Global Network Asset Placeholder<br/>(Upload Asset Here)</span>
+            <img
+              src={contentGlobe}
+              alt="Visualisasi jaringan global"
+              className="w-full h-auto object-contain"
+            />
           </motion.div>
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {[
               { icon: Globe2, title: "Jaringan Global", desc: "Akses Internasional dan dapat dijangkau dimana Saja", color: "text-green-500", bg: "bg-green-50" },
-              { icon: Infinity, title: "Unlimited", desc: "Nikmati Jaringan Tak Terbatas Kemanapun", color: "text-pink-500", bg: "bg-pink-50" },
+              { icon: InfinityIcon, title: "Unlimited", desc: "Nikmati Jaringan Tak Terbatas Kemanapun", color: "text-pink-500", bg: "bg-pink-50" },
               { icon: Network, title: "Connecting", desc: "Terhubung ke Semua Orang Dengan Cepat", color: "text-blue-500", bg: "bg-blue-50" },
               { icon: Shield, title: "Security", desc: "Build the future of commerce with Shopify's powerful API", color: "text-red-500", bg: "bg-red-50" }
             ].map((feature, idx) => (
@@ -177,9 +187,9 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">{pkg.name}</h3>
                   </div>
-                  <div className="p-6 flex-grow flex flex-col">
+                  <div className="p-6 grow flex flex-col">
                     <h4 className="text-lg font-bold text-gray-900 mb-2">{pkg.title}</h4>
-                    <p className="text-gray-600 text-sm mb-6 flex-grow">{pkg.description}</p>
+                    <p className="text-gray-600 text-sm mb-6 grow">{pkg.description}</p>
                     <div className="mb-6">
                       <span className="text-gray-900 text-sm font-bold">Rp. </span>
                       <span className="text-3xl font-extrabold text-gray-900">{pkg.price.toLocaleString('id-ID')}</span>

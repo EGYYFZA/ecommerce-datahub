@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { CheckCircle2, AlertCircle, ArrowLeft, Wifi } from "lucide-react";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/src/components/UI/button";
 
 interface Package {
   id: number;
@@ -35,7 +35,7 @@ export default function Order() {
         if (!res.ok) throw new Error("Package not found");
         const data = await res.json();
         setPkg(data);
-      } catch (err) {
+      } catch {
         setError("Paket tidak ditemukan.");
       } finally {
         setLoading(false);
@@ -88,7 +88,7 @@ export default function Order() {
       window.dispatchEvent(new Event("user-updated"));
 
       setStep("success");
-    } catch (err) {
+    } catch {
       setError("Terjadi kesalahan saat memproses pembelian.");
       setStep("confirm");
     }
