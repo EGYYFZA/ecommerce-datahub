@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/EGYYFZA/ecommerce-datahub#readme",
   "dependencies": {
-    "react": "^19.2.4",
+    "react": "^19.3.1",
     "react-dom": "^19.2.4",
     "vite": "^8.0.3"
   }
