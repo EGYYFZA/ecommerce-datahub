@@ -1,3 +1,3 @@
 # DataHub application
 
-See the [project README](../README.md) for setup, features, and the local-demo security boundary.
+Frontend and local mock-API source. See the [project guide](../README.md) for setup, checks and demo limitations.
