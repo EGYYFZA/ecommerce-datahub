@@ -1,4 +1,6 @@
-<img src=".github/media/cover.png" alt="DataHub — internet package storefront" width="1280">
+<img src=".github/media/cover.png" alt="Globe illustration from the DataHub frontend" width="360">
+
+<sub>Original [frontend artwork](ecommerce-datahub/src/assets/ContentGlobe.svg).</sub>
 
 # DataHub
 
